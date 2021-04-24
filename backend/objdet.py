@@ -6,7 +6,6 @@ Usage:
     Function "obj_detect" accepts one argument, call this module like this:
     "obj_detect(<img object>)"
 """
-
 import cvlib as cv
 from cvlib.object_detection import draw_bbox
 import cv2
@@ -21,7 +20,6 @@ def obj_detect(img):
     Return:
         Dictionary of results.
     """
-    print(type(img))
     result = {}
     # Apply object detection
     bbox, labels, conf = cv.detect_common_objects(img, confidence=0.30)
