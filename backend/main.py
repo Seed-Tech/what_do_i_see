@@ -10,5 +10,4 @@ import cv2
 import sys
 
 if __name__ == "__main__":
-    img = cv2.imread(sys.argv[1])
-    print(obj_detect(img))
+    print(obj_detect(cv2.imread(sys.argv[1])))
