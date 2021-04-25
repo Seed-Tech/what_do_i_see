@@ -15,7 +15,7 @@ import sys
 app = Flask(__name__)
 
 
-@app.rout
+@app.route('/')
 def main():
     """Return dictionary of image proccessed"""
     return(obj_detect(cv2.imread(sys.argv[1])))
