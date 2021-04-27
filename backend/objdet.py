@@ -9,7 +9,7 @@ Usage:
 import cvlib as cv
 from cvlib.object_detection import draw_bbox
 import cv2
-
+import base64
 
 def obj_detect(img):
     """Function to proccess an image through cvlib API.
@@ -28,6 +28,9 @@ def obj_detect(img):
         result[element] = labels.count(element)
     # Draw bounding box over detected objects
     out = draw_bbox(img, bbox, labels, conf)
+    img_data = base64.b64encode(out)
+    #_, img_encoded = cv2.imencode('.jpg', out)
+    result['img'] = img_data
     # Save output
     #cv2.imwrite("object_detection.jpg", out)
     return(result)
