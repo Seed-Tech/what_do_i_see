@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """This module proccesses an image through YOLO V3 model
-using cvlib API and stores and print its output.
+using cvlib library and stores and print its output.
 
 Usage:
     Function "obj_detect" accepts one argument, call this module like this:
@@ -29,5 +29,5 @@ def obj_detect(img):
     # Draw bounding box over detected objects
     out = draw_bbox(img, bbox, labels, conf)
     # Save output
-    cv2.imwrite("object_detection.jpg", out)
+    #cv2.imwrite("object_detection.jpg", out)
     return(result)
