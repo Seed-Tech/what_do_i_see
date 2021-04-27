@@ -3,6 +3,7 @@ from azure.storage.blob import ContainerClient
 
 
 def get_files(dir):
+    """ Function to list all files in a directory as a "objects". """
     with os.scandir(dir) as entries:
         for entry in entries:
             if entry.is_file() and not entry.name.startswith('.'):
@@ -10,6 +11,7 @@ def get_files(dir):
 
 
 def upload(files):
+    """ Function that add image to azure Blob storage. """
     azure_strg_connecstr = "DefaultEndpointsProtocol=https;AccountName=seedtech;AccountKey=ed2KCHzhwxCYjmyGXupChOTs/Yr30kcL+udmbPEklKbGDkKbUVegtDeodYeFpIzSs/xIhZK+hE3zkPZRcAyEbQ==;EndpointSuffix=core.windows.net"
     pic_contain_name = "seedt-images"
     

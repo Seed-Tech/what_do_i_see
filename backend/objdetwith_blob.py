@@ -38,7 +38,7 @@ def obj_detect(img):
     send_to_blob()
     return(result)
 
-def send_to_blob(img)
+def send_to_blob(img):
     """ Upload file to blob """
     images = get_files('backend/image')
     upload(images)
