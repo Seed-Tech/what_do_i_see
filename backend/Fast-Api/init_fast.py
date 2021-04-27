@@ -30,13 +30,16 @@ async def main(request: Request):
     Return:
         Dictionary of results or null if model cannot
         proccess the image"""
-    # img_data = base64.b64decode(request.data)
     data = await request.body()
+    # data = base64.b64decode(data)
     img_arr = np.frombuffer(data, dtype=np.uint8)
     try:
         img = cv2.imdecode(img_arr, flags=cv2.IMREAD_COLOR)
         result = obj_detect(img)
-        #print(result)
+        #for key, value in result.items():
+        #    if key != 'img':
+        #        print(key)
+        #        print(value)
         return(result)
     except:
         return({})
