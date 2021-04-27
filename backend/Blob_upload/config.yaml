@@ -1,3 +1,0 @@
-azure_storage_connectionstring: "DefaultEndpointsProtocol=https;AccountName=seedtech;AccountKey=ed2KCHzhwxCYjmyGXupChOTs/Yr30kcL+udmbPEklKbGDkKbUVegtDeodYeFpIzSs/xIhZK+hE3zkPZRcAyEbQ==;EndpointSuffix=core.windows.net"
-pictures_container_name: "seedt-images"
-# source_folder: "/Users/USUARIO/Desktop"

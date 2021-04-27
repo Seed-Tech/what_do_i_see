@@ -6,7 +6,7 @@ Usage:
     Function "obj_detect" accepts one argument, call this module like this:
     "obj_detect(<img object>)"
 """
-from Blob_upload.upload import upload, load_config
+from Blob_upload.upload import upload, get_files
 import cvlib as cv
 from cvlib.object_detection import draw_bbox
 import cv2
@@ -30,14 +30,15 @@ def obj_detect(img):
     # Draw bounding box over detected objects
     out = draw_bbox(img, bbox, labels, conf)
     img_data = base64.b64encode(out)
-    # Function to save img in blob storage
-    send_to_blob(out)
     #_, img_encoded = cv2.imencode('.jpg', out)
     result['img'] = img_data
     # Save output
-    #cv2.imwrite("object_detection.jpg", out)
+    cv2.imwrite("./backend/image/object_detection.jpg", out)
+    # Function to save img in blob storage
+    send_to_blob()
     return(result)
 
 def send_to_blob(img)
-    config = load_config()
-    upload(img, config["azure_storage_connectionstring"], config["container_name"])
+    """ Upload file to blob """
+    images = get_files('backend/image')
+    upload(images)
