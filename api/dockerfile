@@ -1,0 +1,15 @@
+FROM ubuntu:focal
+RUN apt-get update -y
+RUN apt install software-properties-common -y
+RUN add-apt-repository ppa:deadsnakes/ppa -y
+RUN apt-get install python3.7 -y
+RUN apt-get install python3-pip -y
+RUN pip3 install numpy==1.19.2
+RUN pip3 install opencv-python tensorflow
+RUN pip3 install cvlib
+RUN pip3 install fastapi
+RUN pip3 install uvicorn[standard]
+RUN pip3 install azure-storage-blob
+RUN apt-get install ffmpeg libsm6 libxext6  -y
+RUN apt install curl -y
+ADD backend/api api
