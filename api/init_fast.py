@@ -12,7 +12,7 @@ Usage:
 """
 from fastapi import FastAPI, Request
 from objdetwith_blob import obj_detect
-# import base64
+import base64
 import numpy as np
 import cv2
 import sys
@@ -31,15 +31,14 @@ async def main(request: Request):
         Dictionary of results or null if model cannot
         proccess the image"""
     data = await request.body()
-    # data = base64.b64decode(data)
-    img_arr = np.frombuffer(data, dtype=np.uint8)
+    data = base64.b64decode(data)
     try:
-    img = cv2.imdecode(img_arr, flags=cv2.IMREAD_COLOR)
-    result = obj_detect(img)
-    #for key, value in result.items():
-        #if key != 'img':
-            #print(key)
-            #print(value)
-    return(result)
+        img_arr = np.frombuffer(data, dtype=np.uint8)
+        img = cv2.imdecode(img_arr, flags=cv2.IMREAD_COLOR)
+        result = obj_detect(img)
+        for key, value in result.items():
+            #if key != 'img':
+            print("label: {}, value: {}".format(key, value))
+        return(result)
     except:
         return ({})
