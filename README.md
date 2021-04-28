@@ -15,6 +15,8 @@ What do i see is an application made for detection of around 80 common default o
 
 ## How it works 
 
+NAOAPI is currently running on a docker container running on an Azure virtual machine, to access this API send a request to: http://104.214.57.104:8000/ \
+NAOAPI must receive on the body of a post or get HTTP request only the raw data of the image, it will send back the results of the detection and the resulted image.\
 The backend of the application uses the cvlib library, (as long as the openCV, tensorflow packages are installed) after loading the image, the detection of objects is carried out with the call of the function detect_common_objects (). This returns Bbox (minimum bounding box), conf (confidence) and a label as a list of all the elements detected, which it uses to create a dictionary that has as a key the name of the element found and the value of the number of times it was found.
 
 # Technologies 
@@ -69,8 +71,7 @@ we also have six initial sketches:
 
 The information/data are generated from the mobile device. For this first prototype, the process of logging in or registering is not enabled to collect, with information/data refers to the image that the user can photograph or take from their gallery. This image will be decoded and sent by http to an ubuntu server in docker manipulated by fast-api, which will redirect the decoded image to a machine learning algorithm implemented with python, tensorflow and opencv, in charge of encoding the image and identifying and pointing to the objects of the photograph received. The image is uploaded to another server for unstructured data in Microsoft Azure of blob type, decoded again and sent back by http in a dictionary with the types and quantity of objects detected to the user in the app made in flutter.
 
-## Installation 
-
+## NAOAPI Installation 
 <h3  align="center"> Instructions to configure environment for naoapi </h3>
 In general, to configure your environment with docker, we are going to install docker, create an image, a container based on the image, Execute a command in a running container and enjoy the execution. the following is a detailed step by step:
 
