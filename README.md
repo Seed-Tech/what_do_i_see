@@ -71,7 +71,10 @@ we also have six initial sketches:
 
 The information/data are generated from the mobile device. For this first prototype, the process of logging in or registering is not enabled to collect, with information/data refers to the image that the user can photograph or take from their gallery. This image will be decoded and sent by http to an ubuntu server in docker manipulated by fast-api, which will redirect the decoded image to a machine learning algorithm implemented with python, tensorflow and opencv, in charge of encoding the image and identifying and pointing to the objects of the photograph received. The image is uploaded to another server for unstructured data in Microsoft Azure of blob type, decoded again and sent back by http in a dictionary with the types and quantity of objects detected to the user in the app made in flutter.
 
-## NAOAPI Installation 
+## NAOAPI
+NAOAPI is an API created by seedtech, it uses cvlib, tensorflow and YOLO to detect object in images, send an image to the API, it will proccess it and return the result in this format: {(objects detected): (quantity), 'img': (encoded image data)}\
+You can find the docker image in: https://hub.docker.com/r/seedtech1/naoapi
+### Installation
 <h3  align="center"> Instructions to configure environment for naoapi </h3>
 In general, to configure your environment with docker, we are going to install docker, create an image, a container based on the image, Execute a command in a running container and enjoy the execution. the following is a detailed step by step:
 
@@ -82,7 +85,7 @@ In general, to configure your environment with docker, we are going to install d
 ```
 sudo apt-get remove docker docker-engine docker.io containerd runc
 ```
-* Update the package index and install the latest version of Docker Engine and containerd
+* Update the package index and install the latest version of Docker Engine and container
 
 ```
  $ sudo apt-get update
