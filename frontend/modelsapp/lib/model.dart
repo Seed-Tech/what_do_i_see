@@ -11,13 +11,12 @@ class Model extends StatefulWidget {
 }
 
 class _ModelState extends State<Model> {
-  
   final picker = ImagePicker();
   bool _loading = true;
   String resultText = "Fetching Response...";
   String _path;
   String _image64;
-  Uint8List _bytes;
+  //Uint8List _bytes;
   File _image;
 
   pickImage() async {
@@ -28,6 +27,7 @@ class _ModelState extends State<Model> {
     setState(() {
       _path = image.path;
       _image = File(image.path);
+      _loading = false;
     });
 
     List bytes = new File(_path).readAsBytesSync();
@@ -56,20 +56,19 @@ class _ModelState extends State<Model> {
   }
 
   Future postDataImage(_data) async {
-   
     return await http.post(
       Uri.http("104.214.57.104:8000", "/"),
       body: jsonEncode(_data),
     );
   }
 
-  void parseResponse (var response) {
+  void parseResponse(var response) {
     String r = "";
 
     resultText = r;
-    _bytes = base64Decode(response['img']);
-    response.remove('img');
-    response.forEach((k,v) =>  r = r + '$k: $v \n');
+    //_bytes = base64Decode(response['img']);
+    //response.remove('img');
+    response.forEach((k, v) => r = r + '$k: $v \n');
     print(r);
     setState(() {
       resultText = r;
@@ -86,13 +85,12 @@ class _ModelState extends State<Model> {
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
-              Color.fromRGBO(20, 220, 192, 1.0),
-              Color.fromRGBO(142, 135, 202, 1.0),
-              Color.fromRGBO(206, 96, 207, 1.0)
+                Color.fromRGBO(20, 220, 192, 1.0),
+                Color.fromRGBO(142, 135, 202, 1.0),
+                Color.fromRGBO(206, 96, 207, 1.0)
               ],
             ),
           ),
-                                                      
           padding: EdgeInsets.symmetric(horizontal: 24),
           child: Container(
             padding: EdgeInsets.symmetric(
@@ -228,33 +226,41 @@ class _ModelState extends State<Model> {
                                     ),
                                   ],
                                 ))
-
                               : Container(
                                   padding: EdgeInsets.only(top: 10),
                                   child: Column(
                                     children: <Widget>[
                                       Container(
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(5),
-                                          ),
-                                          height: 300,
-                                          child: Column(
-                                            children: <Widget>[
-                                              Row(
-                                                children: <Widget> [
-                                                  SizedBox(width: 22,),
-                                                  Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(5),
+                                        ),
+                                        height: 300,
+                                        child: Column(
+                                          children: <Widget>[
+                                            Row(
+                                              children: <Widget>[
+                                                SizedBox(
+                                                  width: 22,
+                                                ),
+                                                Container(
                                                   decoration: BoxDecoration(
-                                                    borderRadius: BorderRadius.circular(10),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
                                                     gradient: LinearGradient(
-                                                    begin: Alignment.topCenter,
-                                                    end: Alignment.bottomCenter,
-                                                    colors: [
-                                                      Color.fromRGBO(20, 220, 192, 1.0),
-                                                      Color.fromRGBO(142, 135, 202, 1.0),
-                                                      Color.fromRGBO(206, 96, 207, 1.0)
-                                                    ],
+                                                      begin:
+                                                          Alignment.topCenter,
+                                                      end: Alignment
+                                                          .bottomCenter,
+                                                      colors: [
+                                                        Color.fromRGBO(
+                                                            20, 220, 192, 1.0),
+                                                        Color.fromRGBO(
+                                                            142, 135, 202, 1.0),
+                                                        Color.fromRGBO(
+                                                            206, 96, 207, 1.0)
+                                                      ],
                                                     ),
                                                   ),
                                                   child: IconButton(
@@ -270,28 +276,33 @@ class _ModelState extends State<Model> {
                                                     ),
                                                     color: Colors.white,
                                                   ),
+                                                ),
+                                                SizedBox(
+                                                  width: 10,
+                                                ),
+                                                Text(
+                                                  'RESULT',
+                                                  style: TextStyle(
+                                                    fontSize: 25,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontFamily: 'ZenDots',
                                                   ),
-                                                  SizedBox(width: 10,),
-                                                  Text('RESULT',
-                                                    style: TextStyle(
-                                                      fontSize: 25,
-                                                      fontWeight: FontWeight.bold,
-                                                      fontFamily: 'ZenDots',                                               
-                                                    ),
-                                                  )
-                                                ],
-                                              ),
-                                              SizedBox(height: 20,),
-
-                                              Container(
-                                                width: MediaQuery.of(context)
-                                                        .size
-                                                        .width -
-                                                    205,
-                                                child: ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                  child: Image.file(_image),
+                                                )
+                                              ],
+                                            ),
+                                            SizedBox(
+                                              height: 20,
+                                            ),
+                                            Container(
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width -
+                                                  250,
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                                child: Image.file(_image,
+                                                    fit: BoxFit.scaleDown),
                                               ),
                                             ),
                                           ],
@@ -303,22 +314,21 @@ class _ModelState extends State<Model> {
                                           '$resultText',
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold
-                                          ),
+                                              color: Colors.black,
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold),
                                         ),
                                       ),
                                     ],
                                   ),
-                              ),
+                                ),
                         )
                       ],
                     )),
               ],
             ),
+          ),
         ),
-      ),
       ),
     );
   }

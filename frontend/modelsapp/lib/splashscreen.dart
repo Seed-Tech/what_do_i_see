@@ -12,10 +12,12 @@ class _MySplashState extends State<MySplash> {
   @override
   Widget build(BuildContext context) {
     return SplashScreen(
-      seconds: 2,
+      seconds: 5,
       navigateAfterSeconds: Home(),
+      image: Image.asset('assets/logo.gif'),
+      photoSize: 125,
       title: Text(
-        'SeedTech App',
+        'What Do I See?',
         style: TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 30,
