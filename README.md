@@ -163,7 +163,7 @@ The development of our application right now is with the following functionaliti
 </p> 
 2. Registration screen, you can register by filling out the fields.
 
-3. Model screen, Now you are there, select the option to view choose the image in which you want to detect the objects
+ 3. Model screen, Now you are there, select the option to view choose the image in which you want to detect the objects
 
 3.1 Select a photo from your gallery
 <img align="left" alt="GIF" width="150"  src="https://github.com/Seed-Tech/what_do_i_see/blob/main/assets_for_readme/Modelscreen.jpeg"/>
