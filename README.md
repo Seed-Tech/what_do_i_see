@@ -1,5 +1,5 @@
 <p align="center">
-<img align="center" alt="GIF" src="https://raw.githubusercontent.com/Seed-Tech/what_do_i_see/master/logo.gif"/>
+<img align="center" alt="GIF" src="https://raw.githubusercontent.com/Alejandra2254/holbertonschool-low_level_programming/master/logo.gif"/>
 </p>
 
 <h3 align="center">Hi there 👋, we are Seedtech, a great group of developers </h3>
