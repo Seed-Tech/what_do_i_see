@@ -33,7 +33,7 @@ async def main(request: Request):
     data = await request.body()
     # data = base64.b64decode(data)
     img_arr = np.frombuffer(data, dtype=np.uint8)
-    #try:
+    try:
     img = cv2.imdecode(img_arr, flags=cv2.IMREAD_COLOR)
     result = obj_detect(img)
     #for key, value in result.items():
@@ -41,5 +41,5 @@ async def main(request: Request):
             #print(key)
             #print(value)
     return(result)
-    #except:
-    #    return ({})
+    except:
+        return ({})
