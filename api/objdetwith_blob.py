@@ -26,7 +26,7 @@ def obj_detect(img):
     name = str(uuid4())
     result = {}
     # Apply object detection
-    bbox, labels, conf = cv.detect_common_objects(img, confidence=0.30)
+    bbox, labels, conf = cv.detect_common_objects(img, confidence=0.40)
     # Create results dictionary.
     for element in labels:
         result[element] = labels.count(element)
@@ -34,7 +34,7 @@ def obj_detect(img):
     out = draw_bbox(img, bbox, labels, conf)
     img_data = base64.b64encode(out)
     #_, img_encoded = cv2.imencode('.jpg', out)
-    result['img'] = img_data
+    #result['img'] = img_data
     try:
         os.mkdir('image/')
     except FileExistsError as error:
