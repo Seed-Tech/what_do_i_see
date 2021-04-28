@@ -73,17 +73,20 @@ The information/data are generated from the mobile device. For this first protot
 <h3  align="center"> Instructions to configure environment for naoapi </h3>
 1. Install docker: to install docker on ubuntu you can go deep into the documentation https://docs.docker.com/engine/install/ubuntu/
 
-    * Uninstall old versions
+* Uninstall old versions
+
 ```
 sudo apt-get remove docker docker-engine docker.io containerd runc
 ```
-    * Update the package index and install the latest version of Docker Engine and containerd,
+* Update the package index and install the latest version of Docker Engine and containerd
+
 ```
  $ sudo apt-get update
  $ sudo apt-get install docker-ce docker-ce-cli containerd.io
- ```
-    * Check that the Docker Engine is installed correctly by running image.hello-world
- ```
+```
+* Check that the Docker Engine is installed correctly by running image.hello-world
+
+```
  $ sudo docker run hello-world
 ```
 2. Check if the Dockerfile is present before to build the image
