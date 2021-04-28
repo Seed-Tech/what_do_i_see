@@ -66,7 +66,7 @@ we also have six initial sketches:
 
 ### Simplified flow chart
 
-<img  align="left"  alt="GIF" width="380" src="https://github.com/Seed-Tech/what_do_i_see/assets_for_readme/blob/main/Flow.jpg"/>
+<img  align="left"  alt="GIF" width="380" src="https://github.com/Seed-Tech/what_do_i_see/blob/main/assets_for_readme/Flow.jpg"/>
 </p>
 
 The information/data are generated from the mobile device. For this first prototype, the process of logging in or registering is not enabled to collect, with information/data refers to the image that the user can photograph or take from their gallery. This image will be decoded and sent by http to an ubuntu server in docker manipulated by fast-api, which will redirect the decoded image to a machine learning algorithm implemented with python, tensorflow and opencv, in charge of encoding the image and identifying and pointing to the objects of the photograph received. The image is uploaded to another server for unstructured data in Microsoft Azure of blob type, decoded again and sent back by http in a dictionary with the types and quantity of objects detected to the user in the app made in flutter.
