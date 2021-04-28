@@ -69,3 +69,80 @@ we also have six initial sketches:
 
 The information/data are generated from the mobile device. For this first prototype, the process of logging in or registering is not enabled to collect, with information/data refers to the image that the user can photograph or take from their gallery. This image will be decoded and sent by http to an ubuntu server in docker manipulated by fast-api, which will redirect the decoded image to a machine learning algorithm implemented with python, tensorflow and opencv, in charge of encoding the image and identifying and pointing to the objects of the photograph received. The image is uploaded to another server for unstructured data in Microsoft Azure of blob type, decoded again and sent back by http in a dictionary with the types and quantity of objects detected to the user in the app made in flutter.
 
+## Installation 
+<h3  align="center"> Instructions to configure environment for naoapi </h3>
+1. Install docker: to install docker on ubuntu you can go deep into the documentation https://docs.docker.com/engine/install/ubuntu/
+
+* Uninstall old versions
+```
+sudo apt-get remove docker docker-engine docker.io containerd runc
+```
+* Update the package index and install the latest version of Docker Engine and containerd,
+```
+ $ sudo apt-get update
+ $ sudo apt-get install docker-ce docker-ce-cli containerd.io
+ ```
+* Check that the Docker Engine is installed correctly by running image.hello-world
+ ```
+ $ sudo docker run hello-world
+```
+2. Check if the Dockerfile is present before to build the image
+3. Build the image. To do this, run the following command from the desktop where the Dockerfile is located.
+```
+$ docker build -t [image_name] .
+```
+* La opción especifica el nombre de la imagen
+4.  The output of the build process will look something like the following:
+```
+Sending build context to Docker daemon  3.584kB
+Step 1/4 : FROM ubuntu:18.04
+ ---> 7698f282e524
+Step 2/4 : RUN apt-get update &&     apt-get install -y gosu redis-server &&     apt-get clean
+ ---> Running in e80d4dd69263
+...
+Removing intermediate container e80d4dd69263
+ ---> e19fb7653fca
+Step 3/4 : EXPOSE 6379
+ ---> Running in 8b2a45f457cc
+Removing intermediate container 8b2a45f457cc
+ ---> 13b92565c201
+Step 4/4 : CMD ["redis-server", "--protected-mode no"]
+ ---> Running in a67ec50c7048
+Removing intermediate container a67ec50c7048
+ ---> d8acc14d9b6b
+Successfully built d8acc14d9b6b
+Successfully tagged linuxize/redis:latest
+```
+5.  When the build process is complete, the new image will appear in the image list:
+```
+$ docker image ls
+```
+```
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+linuxize/redis      latest              d8acc14d9b6b        4 minutes ago       100MB
+ubuntu              18.04               7698f282e524        5 days ago          69.9MB
+```
+6. Now that the image is created you run a container from it by running:
+```
+$ docker run --name [container name] -t -d --network host [image name]
+```
+* flags: "-t -d --network host"
+7. Run a command in a running container or in other word interactive mode:
+8. Execute in interactive mode newly created docker container wiht this command:
+```
+$ docker exec -ti (docker container name) bash"
+```
+* `-t` - Allocate a pseudo-TTY 
+* `--interactive`  ,  `-i`  Keep STDIN open even if not attached
+
+9. Now you get your environment, to see the the noapi working
+10. Go to the api directory
+```
+$ cd to api directory: "cd api"
+```
+11. deploy naoapi with this command: 
+```
+$ uvicorn init_fast: app --port 8000 --host 0.0.0.0"
+```
+12. Enjoy! to connect to naoapi use the next in your browser URL: "http: //" [ip address] ": 8000 /"
+
