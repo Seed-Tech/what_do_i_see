@@ -16,16 +16,13 @@ def upload(files):
     pic_contain_name = "seedt-images"
     
     container_client = ContainerClient.from_connection_string(azure_strg_connecstr, pic_contain_name)
-    print("Upload files to blob to container...")#.format(container_name))
 
     for file in files:
-        print(file.name)
         blob_client = container_client.get_blob_client(file.name)
         with open(file.path, "rb") as data:
             try:
                 blob_client.upload_blob(data)
-                print("{} uploaded to blob storage".format(file.name))
+                print("{} uploaded to container {}".format(file.name, pic_contain_name))
                 os.remove(file)
-                print("{} removed from".format(file.name))
             except:
                 print("{} already exist".format(file.name))
