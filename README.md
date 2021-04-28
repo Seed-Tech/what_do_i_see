@@ -40,7 +40,13 @@ The backend of the application uses the cvlib library, (as long as the openCV, t
 ## Blueprint design
 <img  align="right"  alt="GIF" width="250"  src="https://raw.githubusercontent.com/Seed-Tech/what_do_i_see/master/Blueprint_initialdesign.png"/>
 </p>
-The initial design of our application has a base design in which the background (see the image on the repo)is a color gradient from blue to purple, the containers in white and the color of the letter can be white or black, and all except the main scrren will have a return button we also have six initial sketches: 
+
+The initial design of our application has a base design (see the image on the repo):
+* The background is a color gradient from blue to purple
+* The containers and boxes in white 
+* the color of the letter can be white or black
+* and all except the main scrren will have a return button
+we also have six initial sketches: 
 
 | Screen  | Functionality |
 |--|--|
