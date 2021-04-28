@@ -155,3 +155,10 @@ $ cd to api directory: "cd api"
 $ uvicorn init_fast: app --port 8000 --host 0.0.0.0"
 ```
 12. Enjoy! to connect to naoapi use the next in your browser URL: "http: //" [ip address] ": 8000 /"
+
+## App use guide
+
+The development of our application right now is with the following functionalities, we are going to take a tour of it:
+1. Main screen, see the image you can sign in with the username and password and sign in
+2. Model screen, Now you are there, select the option to view choose the image in which you want to detect the objects
+3. Output screen, Incredible, as you can see, the image that we upload is a dog and the output works tells us that in the image there are objects: dog and quantity: 1.
