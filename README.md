@@ -8,7 +8,7 @@
 
 ## About this repo 
 
-The purpose of this repository is to show an elaboration, adaptation and expansion of code carried out in **2** days by the work team under the premise of making an estimate for the capstone project presented, without having previous knowledge in Flutter, to teach them our skills, dexterity and commitment . We want them and we will try our best to get it. 
+The purpose of this repository is to show an elaboration, adaptation and expansion of code carried out in **4** days by the work team under the premise of making an estimate for the capstone project presented, without having previous knowledge in Flutter, to teach them our skills, dexterity and commitment . We want them and we will try our best to get it. 
 
 <h1 align="center"> Seedtech - What do i see? </h1>
 What do i see is an application made for detection of around 80 common default objects based on a photo or image uploaded to the backend of the app. when detecting the elements the application will output the name of the element and the times number it finds the element in the image.
@@ -28,6 +28,7 @@ The backend of the application uses the cvlib library, (as long as the openCV, t
 * azure-storage-blob
 
 ## Table of contents
+
 | Foulder/File | Description  |
 |--|--|
 | backend | Package, handles the functionality of the application |
@@ -38,14 +39,16 @@ The backend of the application uses the cvlib library, (as long as the openCV, t
 | modelsapp | Toolkit and files created with flutter for the development of the frontend of our application|
 
 ## Blueprint design
+
 <img  align="right"  alt="GIF" width="250"  src="https://raw.githubusercontent.com/Seed-Tech/what_do_i_see/master/Blueprint_initialdesign.png"/>
 </p>
 
 The initial design of our application has a base design (see the image on the repo):
-* The background is a color gradient from blue to purple
-* The containers and boxes in white 
-* the color of the letter can be white or black
-* and all except the main scrren will have a return button
+* The background is a color gradient from blue to purple.
+* The containers and boxes in white.
+* the color of the letter can be white or black.
+* and all except the main scrren will have a return button.
+* 
 we also have six initial sketches: 
 
 | Screen  | Functionality |
@@ -56,4 +59,13 @@ we also have six initial sketches:
 | 4. Detection model | Seleccion model detection, this screen is connected to the api and has a box to view the image and two buttons according to the selection (roll camera and take a photo) |
 | 5. Second model | Is a selection model that we made thanks to the Udemy course, Deep Learning Course with Flutter & Python |
 | 6. Search | This screen is a prototype to the elastic search functionality. |
+
+## Work Flow
+
+### Simplified flow chart
+
+<img  align="left"  alt="GIF" width="380" src="https://github.com/Seed-Tech/what_do_i_see/blob/main/Flow.jpg"/>
+</p>
+
+The information/data are generated from the mobile device. For this first prototype, the process of logging in or registering is not enabled to collect, with information/data refers to the image that the user can photograph or take from their gallery. This image will be decoded and sent by http to an ubuntu server in docker manipulated by fast-api, which will redirect the decoded image to a machine learning algorithm implemented with python, tensorflow and opencv, in charge of encoding the image and identifying and pointing to the objects of the photograph received. The image is uploaded to another server for unstructured data in Microsoft Azure of blob type, decoded again and sent back by http in a dictionary with the types and quantity of objects detected to the user in the app made in flutter.
 
