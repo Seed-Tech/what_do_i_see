@@ -7,10 +7,12 @@ Usage:
     "obj_detect(<img object>)"
 """
 from Blob_upload.upload import upload, get_files
+from uuid import uuid4
 import cvlib as cv
 from cvlib.object_detection import draw_bbox
 import cv2
 import base64
+import os
 
 def obj_detect(img):
     """Function to proccess an image through cvlib API.
@@ -21,6 +23,7 @@ def obj_detect(img):
     Return:
         Dictionary of results.
     """
+    name = str(uuid4())
     result = {}
     # Apply object detection
     bbox, labels, conf = cv.detect_common_objects(img, confidence=0.30)
@@ -32,13 +35,18 @@ def obj_detect(img):
     img_data = base64.b64encode(out)
     #_, img_encoded = cv2.imencode('.jpg', out)
     result['img'] = img_data
+    try:
+        os.mkdir('image/')
+    except FileExistsError as error:
+        pass
     # Save output
-    cv2.imwrite("./backend/image/object_detection.jpg", out)
+    archive_name = "image/" + name + ".jpg"
+    cv2.imwrite(archive_name, out)
     # Function to save img in blob storage
     send_to_blob()
     return(result)
 
-def send_to_blob(img):
+def send_to_blob():
     """ Upload file to blob """
-    images = get_files('backend/image')
+    images = get_files('image/')
     upload(images)
