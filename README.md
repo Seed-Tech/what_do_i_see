@@ -70,7 +70,10 @@ we also have six initial sketches:
 The information/data are generated from the mobile device. For this first prototype, the process of logging in or registering is not enabled to collect, with information/data refers to the image that the user can photograph or take from their gallery. This image will be decoded and sent by http to an ubuntu server in docker manipulated by fast-api, which will redirect the decoded image to a machine learning algorithm implemented with python, tensorflow and opencv, in charge of encoding the image and identifying and pointing to the objects of the photograph received. The image is uploaded to another server for unstructured data in Microsoft Azure of blob type, decoded again and sent back by http in a dictionary with the types and quantity of objects detected to the user in the app made in flutter.
 
 ## Installation 
+
 <h3  align="center"> Instructions to configure environment for naoapi </h3>
+In general, to configure your environment with docker, we are going to install docker, create an image, a container based on the image, Execute a command in a running container and enjoy the execution. the following is a detailed step by step:
+
 1. Install docker: to install docker on ubuntu you can go deep into the documentation https://docs.docker.com/engine/install/ubuntu/
 
 * Uninstall old versions
