@@ -152,7 +152,7 @@ $ cd to api directory: "cd api"
 ```
 11. deploy naoapi with this command: 
 ```
-$ uvicorn init_fast: app --port 8000 --host 0.0.0.0"
+$ uvicorn init_fast:app --port 8000 --host 0.0.0.0
 ```
 12. Enjoy! to connect to naoapi use the next in your browser URL: "http: //" [ip address] ": 8000 /"
 
