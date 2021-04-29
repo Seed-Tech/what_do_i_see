@@ -33,16 +33,24 @@ The backend of the application uses the cvlib library, (as long as the openCV, t
 
 | Foulder/File | Description  |
 |--|--|
-| backend | Package, handles the functionality of the application |
+| api | Package, handles the functionality of the application. |
+| [api](https://github.com/Seed-Tech/what_do_i_see/tree/backend/api)/Dockerfile |  Commands file or instructions to create a dockable image with the application. |
 | [api](https://github.com/Seed-Tech/what_do_i_see/tree/backend/api)/init_fast.py | Handles the creation of the api, receives an image, decodes it to image format to be able to send it the obj_detect() function.  |
 | [api](https://github.com/Seed-Tech/what_do_i_see/tree/backend/api)/objdetwith_blob.py |  Function obj_detect (): through the opencv library handles the AI, allowing to identify and process the image. the function builds a dictionary with labels, which describes the detected objects and a bbox (with bbox, labels and conf of the each image), assigns a name to it. Function send_to_blob (): this module manages blob as well, to save the output.  |
-| [api](https://github.com/Seed-Tech/what_do_i_see/tree/backend/api)/Dockerfile |  Commands file or instructions to create a dockable image with the application |
-| [api](https://github.com/Seed-Tech/what_do_i_see/tree/backend/api)/[Blob_upload](https://github.com/Seed-Tech/what_do_i_see/tree/backend/api/Blob_upload)/upload.py |  Handle the upload data to azure Blob storage. |
-| modelsapp | Toolkit and files created with flutter for the development of the frontend of our application|
+| [Blob_upload](https://github.com/Seed-Tech/what_do_i_see/tree/backend/api/Blob_upload)| Main files to handle data to Azure Storage. |
+| Blob_upload/[upload.py](https://github.com/Seed-Tech/what_do_i_see/blob/main/api/Blob_upload/upload.py) |  Handle the upload data to azure Blob storage. |
+| [assets_for_readme](https://github.com/Seed-Tech/what_do_i_see/tree/main/assets_for_readme) | Images and some dependances to README.md file. |
+| frontend/modelsapp/ | You will find all the files necessary to edit/configure with flutter, the frontend of the mobile application. |
+| frontend/modelsapp/[android/](https://github.com/Seed-Tech/what_do_i_see/tree/main/frontend/modelsapp/android) | App dependencies for Android OS. |
+| frontend/modelsapp/[ios/](https://github.com/Seed-Tech/what_do_i_see/tree/main/frontend/modelsapp/ios) | App dependencies for ios OS.|
+| frontend/modelsapp/[web/](https://github.com/Seed-Tech/what_do_i_see/tree/main/frontend/modelsapp/web)| Dependencies from web deploy. |
+| frontend/modelsapp/[lib/](https://github.com/Seed-Tech/what_do_i_see/tree/main/frontend/modelsapp/lib)| Main flutter codes. |
+| frontend/modelsapp/[pubspec.yaml](https://github.com/Seed-Tech/what_do_i_see/blob/main/frontend/modelsapp/pubspec.yaml)| File that contains the requeriments to config flutter and the device. |
+
 
 ## Blueprint design
 
-<img  align="right"  alt="GIF" width="250"  src="https://raw.githubusercontent.com/Seed-Tech/what_do_i_see/master/Blueprint_initialdesign.png"/>
+<img  align="right"  alt="GIF" width="250"  src="https://github.com/Seed-Tech/what_do_i_see/tree/main/assets_for_readme/Blueprint_initialdesign.png"/>
 </p>
 
 The initial design of our application has a base design (see the image on the repo):
@@ -87,7 +95,7 @@ The information/data are generated from the mobile device. For this first protot
 
 </p>
 
-In the images above you can see the storage account, along with the container and the unstructured data (images) it contains. You need to create a storage account, create a blob container, and share the connection string along with the container name to the code variables in this [file](https://github.com/Seed-Tech/what_do_i_see/blob/main/api/Blob_upload/upload.py).
+In the images above you can see the storage account, along with the container and the unstructured data (images) it contains. You need to create a storage account, create a blob container, and share the connection string along with the container name to the code variables in this [file](https://github.com/Seed-Tech/what_do_i_see/blob/main/api/Blob_upload/upload.py). <br />
 
 
 ## NAOAPI
