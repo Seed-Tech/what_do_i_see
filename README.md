@@ -46,11 +46,12 @@ The backend of the application uses the cvlib library, (as long as the openCV, t
 | frontend/modelsapp/[web/](https://github.com/Seed-Tech/what_do_i_see/tree/main/frontend/modelsapp/web)| Dependencies from web deploy. |
 | frontend/modelsapp/[lib/](https://github.com/Seed-Tech/what_do_i_see/tree/main/frontend/modelsapp/lib)| Main flutter codes. |
 | frontend/modelsapp/[pubspec.yaml](https://github.com/Seed-Tech/what_do_i_see/blob/main/frontend/modelsapp/pubspec.yaml)| File that contains the requeriments to config flutter and the device. |
+| [what_do_i_see.apk](https://github.com/Seed-Tech/what_do_i_see/blob/main/what_do_i_see.apk) | Executable file(last version) for android. |
 
 
 ## Blueprint design
 
-<img  align="right"  alt="GIF" width="250"  src="https://github.com/Seed-Tech/what_do_i_see/tree/main/assets_for_readme/Blueprint_initialdesign.png"/>
+<img  align="right"  alt="GIF" width="250"  src="https://github.com/Seed-Tech/what_do_i_see/blob/main/assets_for_readme/Blueprint_initialdesign.png"/>
 </p>
 
 The initial design of our application has a base design (see the image on the repo):
@@ -103,33 +104,35 @@ NAOAPI is an API created by seedtech, it uses cvlib, tensorflow and YOLO to dete
 You can find the docker image in: https://hub.docker.com/r/seedtech1/naoapi
 
 ### Installation
+
 <h3  align="center"> Instructions to configure environment for naoapi </h3>
+
 In general, to configure your environment with docker, we are going to install docker, create an image, a container based on the image, Execute a command in a running container and enjoy the execution. the following is a detailed step by step:
 
 1. Install docker: to install docker on ubuntu you can go deep into the documentation https://docs.docker.com/engine/install/ubuntu/
 
-* Uninstall old versions
+* Uninstall old versions.
 
 ```
 sudo apt-get remove docker docker-engine docker.io containerd runc
 ```
-* Update the package index and install the latest version of Docker Engine and container
+* Update the package index and install the latest version of Docker Engine and container.
 
 ```
  $ sudo apt-get update
  $ sudo apt-get install docker-ce docker-ce-cli containerd.io
 ```
-* Check that the Docker Engine is installed correctly by running image.hello-world
+* Check that the Docker Engine is installed correctly by running image.hello-world.
 
 ```
  $ sudo docker run hello-world
 ```
-2. Check if the Dockerfile is present before to build the image
+2. Check if the Dockerfile is present before to build the image.
 3. Build the image. To do this, run the following command from the desktop where the Dockerfile is located.
 ```
 $ docker build -t [image_name] .
 ```
-* La opción especifica el nombre de la imagen
+* The option specifies the name of the image.
 4.  The output of the build process will look something like the following:
 ```
 Sending build context to Docker daemon  3.584kB
@@ -173,8 +176,8 @@ $ docker exec -ti (docker container name) bash"
 * `-t` - Allocate a pseudo-TTY 
 * `--interactive`  ,  `-i`  Keep STDIN open even if not attached
 
-9. Now you get your environment, to see the the noapi working
-10. Go to the api directory
+9. Now you get your environment, to see the the noapi working.
+10. Go to the api directory.
 ```
 $ cd to api directory: "cd api"
 ```
@@ -186,20 +189,20 @@ $ uvicorn init_fast:app --port 8000 --host 0.0.0.0
 
 ## App use guide
 The development of our application right now is with the following functionalities, we are going to take a tour of it:
-1. Main screen, see the image you can sign in with the username and password and sign in
+1. Main screen, see the image you can sign in with the username and password and sign in.
 <img  align="left" alt="GIF" width="150"  src="https://github.com/Seed-Tech/what_do_i_see/blob/main/assets_for_readme/Homescreen.jpeg"/>
 </p> 
 
 2. Registration screen, you can register by filling out the fields.
 
 3. Model screen, Now you are there, select the option to view choose the image in which you want to 
-detect the objects
+detect the objects.
 
 3.1 Select a photo from your gallery
 <img align="left" alt="GIF" width="150"  src="https://github.com/Seed-Tech/what_do_i_see/blob/main/assets_for_readme/Modelscreen.jpeg"/>
 </p>
 
-3.2 Open your camera and take a photo
+3.2 Open your camera and take a photo.
 4. Output screen, Incredible, as you can see, the image that we upload is a dog and the output works tells us that in the image there are objects: dog and quantity: 1.
 <img  align="left" alt="GIF" width="150"  src="https://github.com/Seed-Tech/what_do_i_see/blob/main/assets_for_readme/Output.jpeg"/>
 </p>
